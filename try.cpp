@@ -1,31 +1,49 @@
-#include <bits/stdc++.h>
+// CPP program to initialize a vector like
+// an array.
+#include <iostream>
+#include <vector>
 using namespace std;
 
 int main()
 {
-    int bills[] = {5, 5, 5, 5, 20, 20, 5, 5, 5, 5};
-    int five = 0, ten = 0;
-    for (int i = 0; i < sizeof(bills) / sizeof(bills[0]); i++)
+    vector<int> vect, ans;
+    int mul = 1, zero = 0, flag = 0;
+
+    vect.push_back(-1);
+    vect.push_back(1);
+    vect.push_back(0);
+    vect.push_back(-3);
+    vect.push_back(0);
+    for (int i = 0; i < vect.size(); i++)
     {
-        if (bills[i] == 5)
-            five++;
-        else if (bills[i] == 10)
+        if (vect[i] == 0)
         {
-            five--;
-            ten++;
+            zero++;
+            flag = i;
+            continue;
         }
-        else if (bills[i] == 20)
-        {
-            five--;
-            ten--;
-        }
-        if (ten < 0 && five > 2)
-        {
-            ten++;
-            five -= 2;
-        }
-        if (five < 0 || ten < 0)
-            return false;
+        mul = mul * vect[i];
     }
-    return true;
+
+    for (int i = 0; i < vect.size(); i++)
+    {
+        if (zero > 0)
+        {
+            ans.push_back(0);
+        }
+        else
+            ans.push_back(mul / vect[i]);
+    }
+
+    if (zero == 1)
+        ans[flag] = mul;
+
+    cout << mul << endl;
+
+    for (int i = 0; i < vect.size(); i++)
+    {
+        cout << ans[i] << " ";
+    }
+
+    return 0;
 }

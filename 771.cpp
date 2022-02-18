@@ -1,21 +1,21 @@
-class Solution
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
 {
-public:
-    int numJewelsInStones(string jewels, string stones)
+    int x[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4}, sz = 9;
+    int sum = 0;
+    int mx = x[0];
+    for (int i = 0; i < sz; i++)
     {
-        bool js[150] = {0};
-        int cnt = 0, sj = jewels.size(), ss = stones.size();
-        sort(jewels.begin(), jewels.end());
-        sort(stones.begin(), stones.end());
-
-        for (int i = 0; i < jewels.size(); i++)
-            js[jewels[i]] = 1;
-
-        for (int i = 0; i < ss; i++)
+        if (mx + x[i] > mx)
         {
-            if (js[stones[i]] == 1)
-                cnt++;
+            mx = mx + x[i];
         }
-        return cnt;
+        else if (x[i] > mx)
+        {
+            mx = x[i];
+        }
     }
-};
+    return 0;
+}

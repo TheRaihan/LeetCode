@@ -23,7 +23,7 @@ int main()
     for (int i = 0; i < sz; i++)
     {
         k = sz - 1;
-        for (int j = i + 1; j < sz; )
+        for (int j = i + 1; j < sz;)
         {
             if (j == k)
                 break;

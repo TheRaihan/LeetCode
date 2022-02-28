@@ -4,6 +4,8 @@
         "__split_buffer": "cpp",
         "deque": "cpp",
         "list": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "iosfwd": "cpp",
+        "iterator": "cpp"
     }
 }

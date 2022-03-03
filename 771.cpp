@@ -3,19 +3,14 @@ using namespace std;
 
 int main()
 {
-
-    int missingNumber(vector<int> & nums)
+    int a = 5, b =7;
+    long long c = 0 ;
+    
+    while(b!=0)
     {
-        int result = nums.size();
-        int i = 0;
-
-        for (int num : nums)
-        {
-            result = result ^ num;
-            result = result ^ i;
-            i++;
-        }
-
-        return result;
+        c = a&b;
+        a = a^b;
+        b = (unsigned int)c << 1;
     }
+    cout << a << endl;
 }

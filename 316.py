@@ -1,30 +1,16 @@
-#include <iostream>
-#include <string>
-
-class Solution {
-public:
-    string removeDuplicateLetters(string s) {
-        bool visited[26] = {0};
-        int cnt[26] = {0};
-        string res="";
+class Solution:
+    def removeDuplicateLetters(self, s: str) -> str:
+        cnt= Counter(s)
+        visited = set()
+        stack = []
         
-        for(int i=0 ; i<s.size();i++)
-            cnt[ s[i] - 'a' ]++;
+        for c in s:
+            cnt[c]-=1
+            if c not in visited:
+                while stack and stack[-1] > c and cnt[stack[-1]] > 0:
+                    visited.remove(stack.pop())
+                visited.add(c)
+                stack.append(c)
+                
+        return "".join(stack)
         
-        for(int i=0 ; i<s.size();i++)
-        {
-            
-            cnt[ s[i] - 'a' ]--;
-            if(visited[ s[i] - 'a' ]) continue;
-            while(!res.empty() && res.back() > s[i] && cnt[ res.back() - 'a' ] > 0 )
-            {
-                visited[ s[i] - 'a'] = false;
-                res.pop_back();
-            }
-            visited[ s[i] - 'a'] = true;
-            res+=s[i];
-         }
-        
-        return res;
-    }
-};

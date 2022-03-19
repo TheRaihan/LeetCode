@@ -1,33 +1,36 @@
 #include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 
-class Solution
+using namespace std;
+class FreqStack
 {
+
 public:
-    string removeDuplicateLetters(string s)
+    unordered_map<int, int> freq;
+    unordered_map<int, stack<int>> stacks;
+    int mx = 0;
+    
+    void push(int val)
     {
+        freq[val]++;
+        mx = max(freq[val], mx);
+        stacks[freq[val]].push(val);
+    }
 
-        vector<bool> visited(26, false);
-        vector<int> cnt(26, 0);
-        string res = "";
-
-        for (auto c : s)
-            cnt[c - 'a']++;
-
-        for (int i = 0; i < s.size(); i++)
-        {
-            cnt[s[i] - 'a']--;
-            if (visited[s[i] - 'a'] == true)
-                continue;
-            while (!res.empty() && res.back() > s[i] && cnt[res.back() - 'a'] > 0)
-            {
-                visited[res.back() - 'a'] = false;
-                res.pop_back();
-            }
-            visited[s[i] - 'a'] = true;
-            res += s[i];
-        }
-
-        return res;
+    int pop()
+    {
+        int val = stacks[mx].top();
+        stacks[mx].pop();
+        freq[val]--;
+        if (stacks[mx].empty())
+            mx--;
+        return val;
     }
 };
+
+/**
+ * Your FreqStack object will be instantiated and called as such:
+ * FreqStack* obj = new FreqStack();
+ * obj->push(val);
+ * int param_2 = obj->pop();
+ */

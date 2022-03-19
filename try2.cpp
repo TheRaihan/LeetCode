@@ -6,10 +6,10 @@ class FreqStack
 {
 
 public:
-    unordered_map<int, int> freq;
-    unordered_map<int, stack<int>> stacks;
+    map<int, int> freq;
+    map<int, stack<int>> stacks;
     int mx = 0;
-    
+
     void push(int val)
     {
         freq[val]++;

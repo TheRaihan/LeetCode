@@ -1,25 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int sum = 0;
-int n= 10;
 
 int main()
 {
-    // vector<int> vect {0,1,2,3};
+    vector <int> bottom{2,1,2,4,2,2}, top{5,2,6,2,3,2},target;
+    int missT=0,missB=0;
+    target.push_back(top[0]);
+    target.push_back(bottom[0]);
 
-    // for(int x: vect)
-    // {
-    //     cout << x << endl;
-    // }
+    for(int i=0;i<2;i++)
+    {
+        missT=0,missB=0;
+        for (int j = 0; j < top.size(); j++)
+        {
+            if(top[j]!= target[i] && bottom[j]!=target[i])
+                break;
+            
+            if(top[j] != target[i]) missT++;
+            if(bottom[j] != target[i]) missB++;
 
-    if(n==0){
-        cout << sum << endl;
-        return 0;
+        }
+        cout << min(missT,missB)<<endl;
+
     }
-    sum += n;
-    n--;
-    main();
+    cout << -1 << endl;
+
+    
 }
 
 

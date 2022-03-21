@@ -1,34 +1,12 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-
 
 int main()
 {
-    vector <int> bottom{2,1,2,4,2,2}, top{5,2,6,2,3,2},target;
-    int missT=0,missB=0;
-    target.push_back(top[0]);
-    target.push_back(bottom[0]);
-
-    for(int i=0;i<2;i++)
-    {
-        missT=0,missB=0;
-        for (int j = 0; j < top.size(); j++)
-        {
-            if(top[j]!= target[i] && bottom[j]!=target[i])
-                break;
-            
-            if(top[j] != target[i]) missT++;
-            if(bottom[j] != target[i]) missB++;
-
-        }
-        cout << min(missT,missB)<<endl;
-
-    }
-    cout << -1 << endl;
-
-    
+    int x = 0, y = 5, num;
+    num = !x;
+    cout << num << endl;
 }
-
 
 // // CPP program to initialize a vector like
 // // an array.

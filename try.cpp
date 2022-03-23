@@ -1,11 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+bool vowel(char x)
+{
+    string a = "aeiouAEIOU";
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (a[i] == x)
+            return true;
+    }
+    return false;
+}
+
 int main()
 {
-    int x = 0, y = 5, num;
-    num = !x;
-    cout << num << endl;
+    string s = "leetcode";
+    for (int i = 0, j = s.size() - 1; i < j;)
+    {
+        cout << s[i] << " " << s[j] << endl;
+        if (vowel(s[i]) && vowel(s[j]))
+        {
+            swap(s[i], s[j]);
+            i++;
+            j--;
+        }
+        if (!vowel(s[i]))
+            i++;
+        if (!vowel(s[j]))
+            j--;
+        cout << s << endl;
+    }
 }
 
 // // CPP program to initialize a vector like

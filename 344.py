@@ -1,7 +1,4 @@
-class Solution {
-public:
-    void reverseString(vector<char>& s) {
-        for(int i=0, j=s.size()-1;i<j;i++,j--)
-            swap(s[i],s[j]);
-    }
-};
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        for i in range(len(s)//2): s[i], s[-i-1] = s[-i-1], s[i]
+        

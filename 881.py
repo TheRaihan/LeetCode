@@ -1,16 +1,18 @@
-class Solution {
-public:
-    int numRescueBoats(vector<int>& people, int limit) {
-        int cnt=0;
-        sort(people.begin(),people.end());
+class Solution:
+    def numRescueBoats(self, people: List[int], limit: int) -> int:
+        people = sorted(people)
+        left = 0
+        right = len(people) - 1
+        boats = 0
         
-        for(int i=0,j=people.size()-1; i<=j ; j--)
-        {
-            cnt++;
-            if(i==j) break;
-            if(people[i]+people[j] <= limit)
-                i++;
-        }
-        return cnt;
-    }
-};
+        while left <= right:
+            boats+=1
+            if left == right:
+                break
+            
+            if people[left] + people[right] <= limit:
+                left+=1
+            
+            right-=1
+            
+        return boats

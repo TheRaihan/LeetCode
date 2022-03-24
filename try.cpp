@@ -2,20 +2,16 @@
 using namespace std;
 
 
+    char findTheDifference(string s, string t) {
+        char r=0;
+        for(char c:s) r ^=c;
+        for(char c:t) r ^=c;
+        return r;
+}
+
+
 int main()
 {
-    int res = 0;
-    int target=12,startValue =5;
-        while(target > startValue)
-        {
-            if(target % 2)
-                ++target;
-            else
-                target /= 2;
-
-            ++res;
-        }
-        cout <<  res  + startValue - target << endl;
 }
 
 // // CPP program to initialize a vector like

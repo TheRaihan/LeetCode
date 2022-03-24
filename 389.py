@@ -6,3 +6,5 @@ class Solution:
         for ch in t: c = c ^ ord(ch)
             
         return chr(c)
+
+    

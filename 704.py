@@ -1,17 +1,15 @@
-class Solution {
-public:
-    
-    int search(vector<int>& nums, int target) {
-        int left=0, right= nums.size()-1;
-        int mid;
-        while(left<=right)
-        {
-
-            mid = (left + right)/2;
-            if(target>nums[mid]) left = mid+1;
-            else if(target<nums[mid]) right = mid-1;
-            else return mid ;
-        }
-        return -1;
-    }
-};
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        left, right = 0, len(nums)-1
+        
+        while left<=right:
+            mid = left + ((right - left) // 2)
+            if target>nums[mid]:
+                left = mid + 1
+            elif target<nums[mid]:
+                right = mid - 1
+            else:
+                return mid
+                
+        return -1
+                

@@ -1,15 +1,10 @@
-class Solution {
-public:
-    int climbStairs(int n) {
-        int one = 1,two = 1;
-        int tmp;
-        n--;
-        while(n--)
-        {
-            tmp = one;
-            one = one + two;
-            two = tmp;
-        }
-        return one;
-    }
-};
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        one, two = 1,1
+        
+        for i in range(n-1):
+            tmp = one
+            one += two
+            two = tmp
+        
+        return one

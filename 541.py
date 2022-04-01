@@ -1,0 +1,13 @@
+class Solution {
+public:
+    string reverseStr(string s, int k) {
+        int sz = s.size();
+        for(int i = 0 ;i < sz-1 ; i+=(2*k))
+        {
+            int start = i, end = min(i+k-1,sz-1);
+            while( start <= end )
+                swap(s[start++],s[end--]);
+        }
+        return s;
+    }
+};

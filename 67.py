@@ -1,24 +1,17 @@
-class Solution {
-public:
-    string addBinary(string a, string b) {
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        i, j, carry = len(a)-1, len(b)-1, 0
+        ans = ""
         
-        int i = a.size() - 1;
-        int j = b.size() - 1;
-        int sum = 0,carry = 0;
-        string ans;
-
-        while( i >= 0 || j >= 0)
-        {
-            sum  = carry;
-            if(i >= 0)  sum += a[i--] - '0';
-            if(j >= 0)  sum += b[j--] - '0';
-            carry = sum > 1 ? 1 : 0;
-            ans += to_string(sum%2);
-        }
-
-        if(carry)  ans += to_string(carry);
-        
-        reverse(ans.begin(),ans.end());
-        return ans;
-    }
-};
+        while i>=0 or j>=0:
+            sum = carry;
+            if i >= 0: sum += ord(a[i]) - ord('0')
+            if j >= 0: sum += ord(b[j]) - ord('0')
+            i, j = i-1, j-1
+            carry = 1 if sum > 1 else 0
+            ans += str(sum%2)
+            
+        if carry:
+            ans += str(carry)
+            
+        return ans[::-1]

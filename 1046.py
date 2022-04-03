@@ -1,15 +1,14 @@
-class Solution {
-public:
-    int lastStoneWeight(vector<int>& stones) {
-        priority_queue<int> heap(begin(stones), end(stones)); 
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        stones = [-s for s in stones]
+        heapq.heapify(stones)
         
-        while (heap.size() > 1)
-        {
-            auto first = heap.top(); heap.pop();
-            auto second = heap.top(); heap.pop();
-            if(first - second > 0) heap.push(first - second);
-        }
-        
-        return heap.empty() ? 0 : heap.top();
-    }
-};
+        while len(stones) > 1 :
+            first = heapq.heappop(stones)
+            second = heapq.heappop(stones)
+            
+            if second > first:
+                heapq.heappush(stones, first - second)
+                
+        stones.append(0)
+        return abs(stones[0]) 

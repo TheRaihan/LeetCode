@@ -1,19 +1,13 @@
-class Solution {
-public:
-    int maxArea(vector<int>& height) {
-        int water=0,mx = 0, dis=0;
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        l, r,mx = 0, len(height) - 1, 0
         
-        for(int left = 0, right = height.size()-1 ; left<=right; )
-        {
-            dis = right - left;
-            // cout<< dis << " " << height[left] << " " << height[right]<< endl;
-            water = dis * min(height[left],height[right]);
-            if(water > mx)
-                mx = water;
+        while l<=r:
+            dis = r-l
+            water = dis * min(height[l],height[r])
+            mx = max(water,mx)
             
-            (height[left] < height[right]) ? left++ : right --;
-            
-        }
-        return mx;
-    }
-};
+            if (height[l] < height[r]): l+=1 
+            else: r-=1
+        
+        return mx

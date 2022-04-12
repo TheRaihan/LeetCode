@@ -1,7 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 0 1 1 2 3 5 8
 
+int loop(int n)
+{
+    if(n == 0) return n;
+
+    else {
+        n--;
+        loop(n);
+        cout << n << endl;
+    }
+}
+
+// stack -- 5
+
+int main(){
+
+    cout << loop(5) << endl;
+
+    return 0;
+}
+
+// mark = { 0, 2, 1, 3, 1};
+
+// 1, 3
+
+// 3, 1
+
+
+/**
     char findTheDifference(string s, string t) {
         char r=0;
         for(char c:s) r ^=c;
@@ -80,3 +109,4 @@ int main()
 
 //     return 0;
 // }
+**/

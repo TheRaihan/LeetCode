@@ -12,27 +12,24 @@
 class Solution {
 public:
     
-    pair<bool,int> dfs(TreeNode* root){
-        pair<bool,int> res,left,right;
+    int depth(TreeNode* root){
 
-        if(!root){
-            res.first = true;
-            res.second = 0;
-            return res;
-        }
-        left = dfs(root->left);
-        right = dfs(root->right);
+        if(!root)
+            return 0;
         
-        res.first = (left.first && right.first && 
-                            abs(left.second - right.second) <= 1 );
-            
-        res.second = 1 + max(left.second,right.second);
-        
-        return res;
-        
+        int left = depth(root->left);
+        int right = depth(root->right);
+
+        return 1 + max(left, right);
     }
     
     bool isBalanced(TreeNode* root) {
-        return dfs(root).first;
+        
+        if(!root)
+            return true;
+
+        bool balanced = abs(depth(root->left) - depth(root->right) ) <= 1 ;
+        
+        return isBalanced(root->left) && isBalanced(root->right) && balanced;
     }
 };

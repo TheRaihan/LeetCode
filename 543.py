@@ -1,34 +1,24 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-class Solution {
-public:
-    
-    int diameter = 0;
-
-    int dfs(TreeNode* root)
-    {
-        if(!root) return 0;
-        int left = dfs(root->left);
-        int right = dfs(root->right);
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         
-        diameter = max(left+right, diameter);
+        def dfs(root):
+            nonlocal diameter
+            if not root:
+                return 0
+            
+            left = dfs(root.left)
+            right = dfs(root.right)
+            
+            diameter = max(left+right, diameter)
+            
+            return 1+max(left,right)
         
-        return 1 + max(left,right);
-    }
-    
-    
-    int diameterOfBinaryTree(TreeNode* root) {
-        
-        dfs(root);
-        return diameter;
-    }
-};
+        diameter = 0
+        dfs(root)
+        return diameter
